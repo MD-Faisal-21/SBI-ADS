@@ -179,3 +179,21 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# SBI-ADS project-specific files
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded datasets and generated files
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Environment and secret files
+.env.*
+!.env.example
+
+# Logs
+*.log
