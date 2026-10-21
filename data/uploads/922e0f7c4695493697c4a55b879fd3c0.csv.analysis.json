@@ -1,0 +1,183 @@
+{
+  "profile": {
+    "rows": 1460,
+    "columns": 7,
+    "duplicate_rows": 0,
+    "column_details": [
+      {
+        "name": "Date",
+        "data_type": "str",
+        "missing_values": 0,
+        "unique_values": 365
+      },
+      {
+        "name": "Product",
+        "data_type": "str",
+        "missing_values": 0,
+        "unique_values": 4
+      },
+      {
+        "name": "Category",
+        "data_type": "str",
+        "missing_values": 0,
+        "unique_values": 2
+      },
+      {
+        "name": "Quantity",
+        "data_type": "int64",
+        "missing_values": 0,
+        "unique_values": 54
+      },
+      {
+        "name": "Price",
+        "data_type": "float64",
+        "missing_values": 0,
+        "unique_values": 1445
+      },
+      {
+        "name": "Customer",
+        "data_type": "str",
+        "missing_values": 0,
+        "unique_values": 10
+      },
+      {
+        "name": "Region",
+        "data_type": "str",
+        "missing_values": 0,
+        "unique_values": 5
+      }
+    ],
+    "numerical_columns": [
+      "Quantity",
+      "Price"
+    ],
+    "categorical_columns": [
+      "Date",
+      "Product",
+      "Category",
+      "Customer",
+      "Region"
+    ]
+  },
+  "detected_columns": {
+    "date": "date",
+    "product": "product",
+    "category": "category",
+    "quantity": "quantity",
+    "price": "unit_price",
+    "customer": "customer",
+    "region": "location"
+  },
+  "cleaning": {
+    "original_rows": 1460,
+    "final_rows": 1460,
+    "duplicates_removed": 0
+  },
+  "kpis": {
+    "total_revenue": 324228240.1,
+    "total_quantity": 34291,
+    "total_products": 4,
+    "total_customers": 10,
+    "total_locations": 5,
+    "average_price": 17321.77,
+    "average_order_value": 222074.14,
+    "top_product": "Laptop",
+    "top_product_revenue": 215745438.85,
+    "top_location": "Mumbai",
+    "top_category": "Electronics",
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31"
+  },
+  "eda": {
+    "numerical_summary": {
+      "quantity": {
+        "mean": 23.49,
+        "median": 22.0,
+        "minimum": 6.0,
+        "maximum": 60.0,
+        "standard_deviation": 11.16
+      },
+      "price": {
+        "mean": 17321.77,
+        "median": 6456.35,
+        "minimum": 749.17,
+        "maximum": 58172.66,
+        "standard_deviation": 22219.57
+      }
+    },
+    "categorical_summary": {
+      "product": {
+        "Laptop": 365,
+        "Monitor": 365,
+        "Keyboard": 365,
+        "Mouse": 365
+      },
+      "category": {
+        "Electronics": 730,
+        "Accessories": 730
+      },
+      "customer": {
+        "Rahul": 159,
+        "Karan": 156,
+        "Vikas": 155,
+        "Arjun": 154,
+        "Sneha": 149,
+        "Pooja": 146,
+        "Neha": 143,
+        "Amit": 136,
+        "Priya": 132,
+        "Rohit": 130
+      },
+      "region": {
+        "Mumbai": 431,
+        "Delhi": 310,
+        "Pune": 271,
+        "Bangalore": 249,
+        "Hyderabad": 199
+      }
+    },
+    "correlations": {
+      "quantity": {
+        "quantity": 1.0,
+        "price": -0.75
+      },
+      "price": {
+        "quantity": -0.75,
+        "price": 1.0
+      }
+    },
+    "date_analysis": {
+      "start_date": "2025-01-01",
+      "end_date": "2025-12-31",
+      "number_of_days": 365
+    }
+  },
+  "charts": [
+    "C:\\TYIT\\Final RP\\SBI-ADS\\data\\charts\\product_performance.png",
+    "C:\\TYIT\\Final RP\\SBI-ADS\\data\\charts\\regional_performance.png",
+    "C:\\TYIT\\Final RP\\SBI-ADS\\data\\charts\\price_distribution.png",
+    "C:\\TYIT\\Final RP\\SBI-ADS\\data\\charts\\correlation_heatmap.png",
+    "C:\\TYIT\\Final RP\\SBI-ADS\\data\\charts\\sales_trend.png"
+  ],
+  "insights": [
+    "Mouse is the highest-selling product by quantity in the dataset.",
+    "Laptop leads revenue with 215,745,439 in sales \u2014 66.5% of total revenue.",
+    "Mumbai is the highest-volume location, contributing approximately 33.5% of total quantity.",
+    "There is a negative relationship between quantity and price (correlation: -0.75).",
+    "The dataset covers the period from 2025-01-01 to 2025-12-31.",
+    "No duplicate records were detected in the analyzed dataset."
+  ],
+  "recommendations": [
+    {
+      "area": "Regional Performance",
+      "priority": "Medium",
+      "recommendation": "Mumbai shows significantly higher activity than Hyderabad. Consider investigating the factors behind the performance difference."
+    },
+    {
+      "area": "Pricing",
+      "priority": "Medium",
+      "recommendation": "The data shows a negative relationship between quantity and price. Consider reviewing pricing and demand patterns before making pricing decisions."
+    }
+  ],
+  "anomalies": []
+}

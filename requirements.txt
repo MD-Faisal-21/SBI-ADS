@@ -1,0 +1,24 @@
+# SBI-ADS — Python dependencies
+# Python 3.10+ recommended (tested on 3.12)
+
+# --- Web framework ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+
+# --- Data & ML ---
+pandas>=2.0
+numpy>=1.26
+scikit-learn>=1.4
+openpyxl>=3.1
+
+# --- Visualisation (static report charts) ---
+matplotlib>=3.8
+
+# --- Configuration ---
+python-dotenv>=1.0
+
+# --- Database ---
+# SQLite is used by default (no driver needed).
+# Install the MySQL driver only when SBI_DB_DRIVER=mysql:
+mysql-connector-python>=8.4

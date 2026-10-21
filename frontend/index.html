@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SBI-ADS — Smart Business Intelligence & AI Decision Support System">
+    <meta name="theme-color" content="#0f1023">
+    <title>SBI-ADS · Business Intelligence &amp; AI Decision Support</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="/frontend/style.css?v=2.0">
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+        <div class="sidebar-brand">
+            <div class="brand-mark" aria-hidden="true">S</div>
+            <div class="brand-text">
+                <h1>SBI-ADS</h1>
+                <p>AI Decision Intelligence</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav" id="sideNav" aria-label="Sections">
+            <span class="nav-label">Workspace</span>
+            <a href="#section-ingest" class="nav-link is-active" data-section="section-ingest"><span class="nav-ico">⬆</span>Data Ingestion</a>
+            <a href="#section-overview" class="nav-link" data-section="section-overview"><span class="nav-ico">◈</span>Executive Overview</a>
+            <a href="#section-kpi" class="nav-link" data-section="section-kpi"><span class="nav-ico">▤</span>Business KPIs</a>
+            <a href="#section-analytics" class="nav-link" data-section="section-analytics"><span class="nav-ico">◉</span>Interactive Analytics</a>
+            <span class="nav-label">Intelligence</span>
+            <a href="#section-insights" class="nav-link" data-section="section-insights"><span class="nav-ico">✦</span>Business Insights</a>
+            <a href="#section-anomalies" class="nav-link" data-section="section-anomalies"><span class="nav-ico">△</span>Anomaly Radar</a>
+            <a href="#section-decisions" class="nav-link" data-section="section-decisions"><span class="nav-ico">➦</span>Decision Support</a>
+            <a href="#section-ai" class="nav-link" data-section="section-ai"><span class="nav-ico">✷</span>AI Demand Decisions</a>
+            <a href="#section-inventory" class="nav-link" data-section="section-inventory"><span class="nav-ico">▣</span>Inventory Intelligence</a>
+            <span class="nav-label">Machine Learning</span>
+            <a href="#section-forecast" class="nav-link" data-section="section-forecast"><span class="nav-ico">↗</span>Demand Forecast</a>
+            <a href="#section-model" class="nav-link" data-section="section-model"><span class="nav-ico">✓</span>Model Performance</a>
+            <a href="#section-validation" class="nav-link" data-section="section-validation"><span class="nav-ico">⇄</span>Backtest Detail</a>
+            <a href="#section-evaluation" class="nav-link" data-section="section-evaluation"><span class="nav-ico">⌗</span>Per-Product Accuracy</a>
+            <span class="nav-label">Governance</span>
+            <a href="#section-quality" class="nav-link" data-section="section-quality"><span class="nav-ico">⛭</span>Data Quality</a>
+            <a href="#section-history" class="nav-link" data-section="section-history"><span class="nav-ico">☰</span>Analysis History</a>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="sidebar-version">v2.0.0 · FastAPI + ML</div>
+        </div>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+    <div class="main-col">
+
+        <header class="topbar">
+            <button class="icon-btn" id="sidebarToggle" aria-label="Toggle navigation" aria-controls="sidebar">☰</button>
+            <div class="topbar-titles">
+                <div class="topbar-kicker">SMART BUSINESS INTELLIGENCE</div>
+                <div class="topbar-sub" id="topbarSub">Upload a dataset to activate the intelligence workspace</div>
+            </div>
+            <div class="topbar-actions">
+                <div class="health-pill" id="healthPill" title="System health"><span class="pulse-dot" id="healthDot"></span><span id="healthText">Checking…</span></div>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><span id="themeIcon">☾</span></button>
+                <a class="btn btn-ghost btn-sm" href="/docs" target="_blank" rel="noopener">API Docs</a>
+                <button class="btn btn-ghost btn-sm" id="exportReportBtn" title="Download the full analysis as JSON">Export Report</button>
+            </div>
+        </header>
+
+        <main class="content" id="content">
+
+            <section id="emptyState" class="empty-state">
+                <div class="empty-art" aria-hidden="true">◔</div>
+                <h2>Activate your intelligence workspace</h2>
+                <p>Upload a sales dataset (CSV or Excel) above. SBI-ADS will profile it, compute KPIs, render interactive analytics, backtest an ML demand model, surface statistical anomalies and generate decision-ready recommendations.</p>
+                <div class="empty-steps">
+                    <div class="empty-step"><span>1</span><div><strong>Ingest</strong><small>CSV / XLSX · up to 25 MB</small></div></div>
+                    <div class="empty-step"><span>2</span><div><strong>Analyze</strong><small>KPIs · EDA · quality score</small></div></div>
+                    <div class="empty-step"><span>3</span><div><strong>Forecast</strong><small>Weekly demand ML model</small></div></div>
+                    <div class="empty-step"><span>4</span><div><strong>Act</strong><small>Recommendations &amp; alerts</small></div></div>
+                </div>
+            </section>
+
+            <section id="section-ingest" class="panel">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">DATA INGESTION</span>
+                        <h2>Analyze your business data</h2>
+                        <p class="panel-sub">Upload a CSV or Excel dataset to generate KPIs, interactive analytics, forecasts and AI decision support.</p>
+                    </div>
+                </div>
+                <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose a dataset file">
+                    <span class="drop-ico" aria-hidden="true">↥</span>
+                    <div class="drop-text">
+                        <strong id="dropTitle">Drag &amp; drop your dataset here</strong>
+                        <small>or click to browse — CSV / XLSX, up to 25 MB</small>
+                    </div>
+                    <button class="btn btn-primary" id="analyzeButton" type="button" disabled>Analyze Dataset <span aria-hidden="true">→</span></button>
+                </div>
+                <input type="file" id="fileInput" accept=".csv,.xlsx" hidden>
+                <div class="pipeline-track" id="pipelineTrack" hidden>
+                    <div class="pipeline-step" data-step="upload"><span class="step-dot"></span>Upload</div>
+                    <div class="pipeline-step" data-step="kpi"><span class="step-dot"></span>KPIs &amp; EDA</div>
+                    <div class="pipeline-step" data-step="charts"><span class="step-dot"></span>Analytics</div>
+                    <div class="pipeline-step" data-step="forecast"><span class="step-dot"></span>ML Forecast</div>
+                    <div class="pipeline-step" data-step="decisions"><span class="step-dot"></span>Decisions</div>
+                    <div class="pipeline-step" data-step="inventory"><span class="step-dot"></span>Inventory</div>
+                </div>
+                <p id="status" class="status" role="status" aria-live="polite"></p>
+            </section>
+
+            <section id="section-overview" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">EXECUTIVE VIEW</span>
+                        <h2>Executive Overview</h2>
+                        <p class="panel-sub" id="overviewSummary">Upload a dataset to generate an executive summary.</p>
+                    </div>
+                    <div class="head-actions">
+                        <a class="btn btn-ghost btn-sm" href="/api/system/report" id="downloadReportLink">Download Report</a>
+                    </div>
+                </div>
+                <div class="grid-6 overview-grid">
+                    <div class="mini-card"><span>Dataset</span><strong id="overviewDataset">—</strong></div>
+                    <div class="mini-card"><span>Records</span><strong id="overviewRecords">—</strong></div>
+                    <div class="mini-card"><span>Products</span><strong id="overviewProducts">—</strong></div>
+                    <div class="mini-card"><span>Forecast</span><strong id="overviewForecastStatus">—</strong></div>
+                    <div class="mini-card"><span>Top Priority</span><strong id="overviewTopPriority">—</strong></div>
+                    <div class="mini-card"><span>Model R²</span><strong id="overviewModelR2">—</strong></div>
+                </div>
+            </section>
+
+            <section id="section-kpi" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">PERFORMANCE</span>
+                        <h2>Business KPIs</h2>
+                        <p class="panel-sub">Headline metrics computed after cleaning and semantic column detection.</p>
+                    </div>
+                </div>
+                <div class="kpi-grid" id="kpiGrid">
+                    <article class="kpi-card kpi-revenue"><div class="kpi-ico" aria-hidden="true">₹</div><div class="kpi-body"><h3>Total Revenue</h3><p id="totalRevenue">—</p><small id="kpiAov">AOV —</small></div></article>
+                    <article class="kpi-card"><div class="kpi-ico" aria-hidden="true">▦</div><div class="kpi-body"><h3>Units Sold</h3><p id="totalQuantity">—</p><small id="kpiPeriod">—</small></div></article>
+                    <article class="kpi-card"><div class="kpi-ico" aria-hidden="true">◆</div><div class="kpi-body"><h3>Products</h3><p id="totalProducts">—</p><small id="kpiTopProduct">Top —</small></div></article>
+                    <article class="kpi-card"><div class="kpi-ico" aria-hidden="true">☺</div><div class="kpi-body"><h3>Customers</h3><p id="totalCustomers">—</p><small>unique in dataset</small></div></article>
+                    <article class="kpi-card"><div class="kpi-ico" aria-hidden="true">⌖</div><div class="kpi-body"><h3>Locations</h3><p id="totalLocations">—</p><small id="kpiTopLocation">Top —</small></div></article>
+                    <article class="kpi-card"><div class="kpi-ico" aria-hidden="true">↋</div><div class="kpi-body"><h3>Avg. Price</h3><p id="kpiAvgPrice">—</p><small>per unit</small></div></article>
+                </div>
+            </section>
+
+            <section id="section-analytics" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">ANALYTICS</span>
+                        <h2>Interactive Analytics</h2>
+                        <p class="panel-sub">Live Chart.js visualizations rendered from your dataset. Hover for exact values; drag on legend to filter.</p>
+                    </div>
+                    <div class="head-actions">
+                        <button class="btn btn-ghost btn-sm" id="toggleStaticBtn">Static Charts</button>
+                    </div>
+                </div>
+                <div class="chart-grid">
+                    <article class="chart-card chart-wide"><h3>Revenue &amp; Quantity Trend</h3><div class="chart-box tall"><canvas id="chartTrend"></canvas></div></article>
+                    <article class="chart-card"><h3>Top Products by Revenue</h3><div class="chart-box"><canvas id="chartProducts"></canvas></div></article>
+                    <article class="chart-card"><h3>Regional Performance</h3><div class="chart-box"><canvas id="chartRegions"></canvas></div></article>
+                    <article class="chart-card"><h3>Category Mix</h3><div class="chart-box"><canvas id="chartCategory"></canvas></div></article>
+                    <article class="chart-card"><h3>Price Distribution</h3><div class="chart-box"><canvas id="chartPrice"></canvas></div></article>
+                    <article class="chart-card chart-wide"><h3>Correlation Matrix</h3><div id="correlationHeatmap" class="corr-wrap"></div></article>
+                </div>
+                <div id="staticChartsWrap" class="chart-grid is-hidden" hidden>
+                    <article class="chart-card chart-wide"><h3>Sales Trend (static)</h3><img src="/charts/sales_trend.png" alt="Sales trend chart" loading="lazy"></article>
+                    <article class="chart-card"><h3>Product Performance (static)</h3><img src="/charts/product_performance.png" alt="Product performance chart" loading="lazy"></article>
+                    <article class="chart-card"><h3>Regional Performance (static)</h3><img src="/charts/regional_performance.png" alt="Regional performance chart" loading="lazy"></article>
+                    <article class="chart-card"><h3>Price Distribution (static)</h3><img src="/charts/price_distribution.png" alt="Price distribution chart" loading="lazy"></article>
+                    <article class="chart-card chart-wide"><h3>Correlation Analysis (static)</h3><img src="/charts/correlation_heatmap.png" alt="Correlation heatmap" loading="lazy"></article>
+                </div>
+            </section>
+
+            <section id="section-insights" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">DISCOVERY</span>
+                        <h2>Business Insights</h2>
+                        <p class="panel-sub">Quantified findings extracted from the uploaded data.</p>
+                    </div>
+                </div>
+                <div id="insightsContainer" class="stack"></div>
+            </section>
+
+            <section id="section-anomalies" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">RISK RADAR</span>
+                        <h2>Anomaly Radar</h2>
+                        <p class="panel-sub">Weeks whose demand deviates abnormally from each product's typical level (robust z-score ≥ 3.0).</p>
+                    </div>
+                </div>
+                <div id="anomaliesSummary" class="anomaly-summary"></div>
+                <div id="anomaliesContainer" class="stack"></div>
+            </section>
+
+            <section id="section-decisions" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">ACTION</span>
+                        <h2>Decision Support</h2>
+                        <p class="panel-sub">Rule-based recommendations derived from KPIs and statistical analysis.</p>
+                    </div>
+                </div>
+                <div id="recommendationsContainer" class="stack"></div>
+            </section>
+
+            <section id="section-ai" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">AI DECISION SUPPORT</span>
+                        <h2>AI Demand Decisions</h2>
+                        <p class="panel-sub" id="mlDecisionDescription">Recommendations generated from the ML demand forecast.</p>
+                    </div>
+                </div>
+                <div id="mlRecommendationsContainer" class="stack"></div>
+            </section>
+
+            <section id="section-inventory" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">OPERATIONS</span>
+                        <h2>Inventory Intelligence</h2>
+                        <p class="panel-sub" id="inventoryDescription">Recommended stock = predicted weekly demand × (1 + 10% safety buffer).</p>
+                    </div>
+                    <div class="head-actions">
+                        <span class="chip" id="inventoryBufferChip">Safety buffer 10%</span>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table id="inventoryTable">
+                        <thead><tr><th>Product</th><th class="num">Current Demand</th><th class="num">Predicted Demand</th><th class="num">Recommended Stock</th><th>Action</th><th>Priority</th></tr></thead>
+                        <tbody id="inventoryBody"></tbody>
+                    </table>
+                </div>
+                <div id="inventoryExplanations" class="stack"></div>
+            </section>
+
+            <section id="section-forecast" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">FORECASTING</span>
+                        <h2>Demand Forecast</h2>
+                        <p class="panel-sub">ML-predicted product demand for the next week, with week-over-week change.</p>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table id="forecastTable">
+                        <thead><tr><th>Product</th><th class="num">Current Demand</th><th class="num">Predicted Demand</th><th class="num">Change</th><th class="num">Change %</th><th>Trend</th></tr></thead>
+                        <tbody id="forecastBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section-model" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">MODEL MONITORING</span>
+                        <h2>ML Model Performance</h2>
+                        <p class="panel-sub" id="modelPerformanceDescription">Time-based backtest of the demand forecasting model on unseen weeks.</p>
+                    </div>
+                </div>
+                <div class="metric-grid">
+                    <div class="metric-tile"><span>Model</span><p id="mlModel">—</p></div>
+                    <div class="metric-tile"><span>Training Weeks</span><p id="trainingWeeks">—</p></div>
+                    <div class="metric-tile"><span>Testing Weeks</span><p id="testingWeeks">—</p></div>
+                    <div class="metric-tile"><span>MAE</span><p id="modelMAE">—</p></div>
+                    <div class="metric-tile"><span>RMSE</span><p id="modelRMSE">—</p></div>
+                    <div class="metric-tile"><span>R² Score</span><p id="modelR2">—</p></div>
+                    <div class="metric-tile"><span>MAPE</span><p id="modelMAPE">—</p></div>
+                </div>
+            </section>
+
+            <section id="section-validation" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">VALIDATION</span>
+                        <h2>Backtest Detail</h2>
+                        <p class="panel-sub" id="forecastValidationDescription">Actual vs predicted demand on unseen testing weeks.</p>
+                    </div>
+                    <div class="head-actions">
+                        <label class="inline-label" for="validationProductFilter">Product</label>
+                        <select id="validationProductFilter" class="select"><option value="">All products</option></select>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table id="validationTable">
+                        <thead><tr><th>Week</th><th>Product</th><th class="num">Actual Demand</th><th class="num">Predicted Demand</th><th class="num">Absolute Error</th></tr></thead>
+                        <tbody id="validationBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section-evaluation" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">MODEL EVALUATION</span>
+                        <h2>Per-Product Accuracy</h2>
+                        <p class="panel-sub" id="forecastEvaluationDescription">Product-level forecast accuracy computed from the backtest.</p>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table id="evaluationTable">
+                        <thead><tr><th>Product</th><th class="num">MAE</th><th class="num">RMSE</th><th class="num">R² Score</th></tr></thead>
+                        <tbody id="evaluationBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section-quality" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">GOVERNANCE</span>
+                        <h2>Data Quality</h2>
+                        <p class="panel-sub">Quality score = 70% completeness + 30% duplicate-free share of the uploaded dataset.</p>
+                    </div>
+                </div>
+                <div class="quality-layout">
+                    <div class="quality-score-card">
+                        <svg viewBox="0 0 120 120" class="gauge" role="img" aria-labelledby="gaugeValue">
+                            <circle cx="60" cy="60" r="52" class="gauge-track"/>
+                            <circle cx="60" cy="60" r="52" class="gauge-fill" id="qualityGauge"/>
+                            <text x="60" y="58" class="gauge-num" id="qualityScoreNum">—</text>
+                            <text x="60" y="76" class="gauge-cap">quality</text>
+                        </svg>
+                    </div>
+                    <div class="quality-facts">
+                        <div class="mini-card"><span>Rows Before Cleaning</span><strong id="qualityRowsBefore">—</strong></div>
+                        <div class="mini-card"><span>Rows After Cleaning</span><strong id="qualityRowsAfter">—</strong></div>
+                        <div class="mini-card"><span>Duplicates Removed</span><strong id="qualityDuplicates">—</strong></div>
+                        <div class="mini-card"><span>Missing Cells</span><strong id="qualityMissing">—</strong></div>
+                        <div class="mini-card"><span>Completeness</span><strong id="qualityCompleteness">—</strong></div>
+                        <div class="mini-card"><span>Duplicate-Free</span><strong id="qualityDupFree">—</strong></div>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table id="qualityTable">
+                        <thead><tr><th>Column</th><th>Type</th><th class="num">Missing</th><th class="num">Unique</th></tr></thead>
+                        <tbody id="qualityBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section-history" class="panel is-hidden">
+                <div class="panel-head">
+                    <div>
+                        <span class="kicker">AUDIT TRAIL</span>
+                        <h2>Analysis History</h2>
+                        <p class="panel-sub">Every dataset processed by the platform, newest first.</p>
+                    </div>
+                    <div class="head-actions">
+                        <button class="btn btn-ghost btn-sm" id="refreshHistoryBtn">Refresh</button>
+                    </div>
+                </div>
+                <div class="table-wrap short">
+                    <table id="historyTable">
+                        <thead><tr><th>Dataset</th><th>Type</th><th class="num">Rows</th><th class="num">Columns</th><th>Upload Date</th><th>Status</th></tr></thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <footer class="footer">SBI-ADS <span>•</span> Smart Business Intelligence &amp; AI Decision Support System <span>•</span> FastAPI · scikit-learn · Chart.js</footer>
+        </main>
+    </div>
+
+    <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="/frontend/script.js?v=2.0"></script>
+</body>
+</html>
